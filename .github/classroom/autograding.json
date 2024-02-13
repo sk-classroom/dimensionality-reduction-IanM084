@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "01 - Setup & PCA",
+      "setup": "pip install -r requirements.txt",
+      "run": "python3 -m unittest tests.test.TestDimensionalityReduction.test_pca_fit_transform",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "02 - LDA",
+      "setup": "",
+      "run": "python3 -m unittest tests.test.TestDimensionalityReduction.test_pca_fit_transform",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Adversarial Example",
+      "setup": "pip install -r requirements.txt",
+      "run": "python3 tests/test.py TestAdversarialExample",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
