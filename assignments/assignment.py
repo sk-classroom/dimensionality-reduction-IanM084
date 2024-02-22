@@ -71,8 +71,7 @@ class PrincipalComponentAnalysis:
             covariance_matrix, k=self.n_components, which="LM"
         )
         self.components = eigenvectors
-        eigenvalues[0 : self.n_components]
-        U = eigenvectors[:, 0 : self.n_components]
+        U = eigenvectors.T
 
         X_new = X @ U
         return X_new
@@ -180,7 +179,7 @@ class LinearDiscriminantAnalysis:
         eigenvalues, eigenvectors = sparse.linalg.eigs(
             Sw_inv @ self.Sb, k=len(self.components) - 1, which="LM"
         )
-        X_new = X @ eigenvectors
+        X_new = X @ eigenvectors.T
 
         return X_new
 
