@@ -67,7 +67,7 @@ class PrincipalComponentAnalysis:
         X = X / X.std(axis=0)
 
         covariance_matrix = np.cov(X)
-        eigenvalues, eigenvectors = sparse.linalg.eig(
+        eigenvalues, eigenvectors = sparse.linalg.eigs(
             covariance_matrix, k=self.n_components, which="LM"
         )
         self.components = eigenvectors
@@ -177,7 +177,7 @@ class LinearDiscriminantAnalysis:
             Transformed values.
         """
         Sw_inv = np.linalg.inv(self.Sw)
-        eigenvalues, eigenvectors = sparse.linalg.eig(
+        eigenvalues, eigenvectors = sparse.linalg.eigs(
             Sw_inv @ self.Sb, k=len(self.components) - 1, which="LM"
         )
         X_new = X @ eigenvectors
