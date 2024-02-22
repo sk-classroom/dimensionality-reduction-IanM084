@@ -63,11 +63,11 @@ class PrincipalComponentAnalysis:
         X_new : ndarray of shape (n_samples, n_components)
             Transformed values.
         """
-        X = X - self.mean
-        X = X / self.std
+        X = X - self.mean(axis = 0)
+        X = X / self.std(axis = 0)
 
         covariance_matrix = np.cov(X)
-        eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)
+        eigenvalues, eigenvectors = sparse.linalg.eig(covariance_matrix, k = self.n_components, which = "LM")
         self.components = eigenvectors
         eigenvalues[0 : self.n_components]
         U = eigenvectors[:, 0 : self.n_components]
